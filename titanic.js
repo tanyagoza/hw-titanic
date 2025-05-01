@@ -50,7 +50,7 @@ fs.readFile('./train.csv', 'utf8', (err, data) => {
         let sex = cells[4]
         let age = +cells[5]
 
-        if (sex === 'male' && age >= 18){
+        if (sex === 'male' && (age >= 18 || age === 0)){
             if (survived === 0){
                 maleNSurCount++;
             }else {
@@ -58,14 +58,14 @@ fs.readFile('./train.csv', 'utf8', (err, data) => {
             }
 
         }
-        if (sex === 'female' && age >= 18){
+        if (sex === 'female' && (age >= 18 || age === 0)) {
             if (survived === 0){
                 femaleNSurCount++;
             }else {
                 femaleSurCount++;
             }
         }
-        if (age < 18){
+        if (age < 18 && age !== 0){
             if (survived === 0){
                 childrenNSurCount++;
             }else {
